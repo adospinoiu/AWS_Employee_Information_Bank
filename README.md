@@ -1,6 +1,8 @@
 # AWS_Employee_Information_Bank
 AWS_Employee_Information_Bank
 
+<img src="/aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe" alt="Alt text" title="Wireframe">
+
 
 # Initial Set-Up of GitHub & VS-Code
 #1 Created the repository on GitHub webpage
