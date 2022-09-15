@@ -1,7 +1,7 @@
 # AWS_Employee_Information_Bank
 AWS_Employee_Information_Bank
 
-![ScreenShot](aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe.png)
+![ScreenShot](AWS_Employee_Information_Bank/aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe.PNG)
 
 
 # Initial Set-Up of GitHub & VS-Code
