@@ -2,7 +2,7 @@
 AWS_Employee_Information_Bank
 
 ### Initial Wire Frame ###
-
+<br>
 ![ScreenShot](./aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe.png)
 
 
