@@ -2,7 +2,7 @@
 AWS_Employee_Information_Bank
 
 ### Initial Wire Frame ###
-![Snapshot](aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe.png "Wireframe")
+![Snapshot](./aws_employee_information_bank-supporting-files/AWS_Employee_Information_Bank-wireframe.png "Wireframe")
 
 
 # Initial Set-Up of GitHub & VS-Code
