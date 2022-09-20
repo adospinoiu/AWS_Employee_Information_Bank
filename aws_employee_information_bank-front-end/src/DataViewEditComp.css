@@ -1,6 +1,8 @@
 .main_div {
-    display: flex;
+    display: inline-block;
     flex-direction: column;
-    flex: 0.75;
+    /* flex: 0.75; */
+    width: 75%;
+    float: right;
     border: 2px solid red;
 }

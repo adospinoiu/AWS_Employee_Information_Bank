@@ -1,6 +1,8 @@
-.main_div {
-    display: flex;
+.dataEntry_main {
+    display: inline-block;
     flex-direction: column;
-    flex: 0.25;
+    /* flex: 0.25; */
+    width: 25%;
+    float: left;
     border: 2px solid red;
 }
