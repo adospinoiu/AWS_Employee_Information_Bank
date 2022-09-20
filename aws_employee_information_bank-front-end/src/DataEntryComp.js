@@ -26,8 +26,8 @@ function DataEntry({ }) {
     //     setEmpZipCode('');
     // }
 
-    const addNewEmployee = () => {
-        console.log(empFirstName)
+    const addNewEmployee = (e) => {
+        console.log(empFirstName, empLastName, empDateOfHire)
     }
 
     return (

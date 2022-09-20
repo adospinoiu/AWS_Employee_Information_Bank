@@ -21,3 +21,9 @@ AWS_Employee_Information_Bank
 #4 Make sure there is a .gitignore file of the back-end as well. (Copy it from the front end).
 
 #5 Install Express on the back-end
+
+# Created the AWS Storage/Database using AWS S3
+
+#1 Created the bucket that will store all the objects pushed from the front-end of the application. Each object will have the information of the employee being stored.
+
+# Overall Flow of the creation of the App
