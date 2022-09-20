@@ -1,0 +1,6 @@
+.main_div {
+    display: flex;
+    flex-direction: column;
+    flex: 0.75;
+    border: 2px solid red;
+}

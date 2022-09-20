@@ -4,7 +4,7 @@ import './DataViewEditComp.css';
 
 function DataViewEdit({}) {
     return (
-        <div>
+        <div className='main_div'>
             <p>Data View And Edit</p>
         </div>
     )

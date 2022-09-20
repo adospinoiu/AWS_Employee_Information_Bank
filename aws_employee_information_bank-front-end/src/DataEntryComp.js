@@ -4,7 +4,7 @@ import './DataEntryComp.css';
 
 function DataEntry({}) {
     return (
-        <div>
+        <div className='main_div'>
             <p>Data Entry</p>
         </div>
     )
