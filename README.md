@@ -27,3 +27,9 @@ AWS_Employee_Information_Bank
 #1 Created the bucket that will store all the objects pushed from the front-end of the application. Each object will have the information of the employee being stored.
 
 # Overall Flow of the creation of the App
+
+#1 Started work on the front-end first. Created two main components (Data Entry and Data View/Edit).
+
+#2 The Data Entry component will have all the input fields that the user enters the respective information of the employee. The Data Entry component also has a submit-button that is activated onClick and sends the object-stored-information to the database for storate.
+
+#3 After completing the basic layout and inputs of the Data Entry component ... set-up the AWS S3 bucket to store the information in the cloud.
