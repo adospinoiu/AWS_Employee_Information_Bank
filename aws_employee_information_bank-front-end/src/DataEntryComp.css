@@ -3,6 +3,6 @@
     flex-direction: column;
     /* flex: 0.25; */
     width: 25%;
-    float: left;
+    /* float: left; */
     border: 2px solid red;
 }
