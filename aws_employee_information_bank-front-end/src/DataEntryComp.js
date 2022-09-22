@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import axios from './axios';
 import './DataEntryComp.css';
 
-function DataEntry({ }) {
+function DataEntryComp({}) {
     // Set State for the Input Fields
     const [ empFirstName, setEmpFirstName ] = useState([])
     const [ empLastName, setEmpLastName ] = useState([])
@@ -12,24 +12,30 @@ function DataEntry({ }) {
     const [ empState, setEmpState ] = useState([])
     const [ empZipCode, setEmpZipCode ] = useState([])
 
-    // const addNewEmployee = (e) => {
-    //     e.preventDefault();
+    const addNewEmployee = () => {
+        // e.preventDefault();
 
-    //     console.log(empFirstName);
+        const employeeData = {
+            employeeFirstName: `${empFirstName}`,
+            employeeLastName: `${empLastName}`,
+            employeeDateOfHire: `${empDateOfHire}`,
+            employeeStreetAddress: `${empStreetAddress}`,
+            employeeCity: `${empCity}`,
+            employeeState: `${empState}`,
+            employeeZipCode: `${empZipCode}`
+            }
 
-    //     setEmpFirstName('');
-    //     setEmpLastName('');
-    //     setEmpDateOfHire('');
-    //     setEmpStreetAddress('');
-    //     setEmpCity('');
-    //     setEmpState('');
-    //     setEmpZipCode('');
-    // }
+        console.log(employeeData)
 
-    const addNewEmployee = (e) => {
-        console.log(empFirstName, empLastName, empDateOfHire)
+        setEmpFirstName('');
+        setEmpLastName('');
+        setEmpDateOfHire('');
+        setEmpStreetAddress('');
+        setEmpCity('');
+        setEmpState('');
+        setEmpZipCode('');
     }
-
+    
     return (
         <div className='dataEntry_main'>
             <div className='dataEntry_header'>
@@ -94,4 +100,4 @@ function DataEntry({ }) {
     )
 }
 
-export default DataEntry
+export default DataEntryComp;
