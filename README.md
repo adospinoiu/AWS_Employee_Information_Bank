@@ -33,3 +33,9 @@ AWS_Employee_Information_Bank
 #2 The Data Entry component will have all the input fields that the user enters the respective information of the employee. The Data Entry component also has a submit-button that is activated onClick and sends the object-stored-information to the database for storate.
 
 #3 After completing the basic layout and inputs of the Data Entry component ... set-up the AWS S3 bucket to store the information in the cloud.
+
+# AWS Set-Up
+
+#1 First created a bucket in S3 that will be the database where all the objects will be stored. The information coming from the front-end will be an object with all the data of the employee.
+
+#2 After the bucket is created, ensure you grant it the right permissions so it is accessible ... i.e. public, private, etc
