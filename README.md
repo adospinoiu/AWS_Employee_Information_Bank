@@ -39,3 +39,7 @@ AWS_Employee_Information_Bank
 #1 First created a bucket in S3 that will be the database where all the objects will be stored. The information coming from the front-end will be an object with all the data of the employee.
 
 #2 After the bucket is created, ensure you grant it the right permissions so it is accessible ... i.e. public, private, etc
+
+#3 You also have to set-up the CORS permissions in the bucket. This is an ARRAY. This will give the permission of GET, PUT, POST, etc.
+
+#4 Having alot of difficulty with the AWS set-up. Here is a general run-down of what I have discovered and tried.
