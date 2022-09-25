@@ -45,3 +45,5 @@ AWS_Employee_Information_Bank
 #4 Having alot of difficulty with the AWS set-up. Here is a general run-down of what I have discovered and tried.
 
 #5 First you have to actually create the S3 bucket. The bucket itself can be controlled on what kind of access is granted to it. "Higher up" you have users that are also granted certain rights to different functionality within the S3 space or ALL AWS functions.
+
+#6 Once the S3 bucket is created and granted the right type of permissions, an access point to the bucket itself can be created. Somehow there is a discrepancy between the types of permissions the bucket has, and the type of permissions the access-point has.
