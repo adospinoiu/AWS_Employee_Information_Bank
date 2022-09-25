@@ -43,3 +43,5 @@ AWS_Employee_Information_Bank
 #3 You also have to set-up the CORS permissions in the bucket. This is an ARRAY. This will give the permission of GET, PUT, POST, etc.
 
 #4 Having alot of difficulty with the AWS set-up. Here is a general run-down of what I have discovered and tried.
+
+#5 First you have to actually create the S3 bucket. The bucket itself can be controlled on what kind of access is granted to it. "Higher up" you have users that are also granted certain rights to different functionality within the S3 space or ALL AWS functions.
