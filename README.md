@@ -49,3 +49,5 @@ AWS_Employee_Information_Bank
 #6 Once the S3 bucket is created and granted the right type of permissions, an access point to the bucket itself can be created. Somehow there is a discrepancy between the types of permissions the bucket has, and the type of permissions the access-point has.
 
 #7 To actually access the S3-Bucket I am trying to use AWS Lambda ... which is simply a function that when called it will returned a signed-url that can be used to upload data to the bucket. The AWS Lambda function also has to be tied to the right bucket and also given the right permissions.
+
+#8 An API Gateway is created to call-up the AWS Lambda function. The API Gateway is an APIT endpoint to which GET-Request can be made .. it then activates the AWS Lambda function and returns an "upLoad URL" as the response. That upLoad URL is what SHOULD work to perform a PUT-Request to load the object-file into the S3 Bucket.
