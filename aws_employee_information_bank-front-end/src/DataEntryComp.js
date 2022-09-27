@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 // import axios from './axios';
 import './DataEntryComp.css';
 
-function DataEntryComp({}) {
+function DataEntryComp({ }) {
     // Set State for the Input Fields
-    const [ empFirstName, setEmpFirstName ] = useState([])
-    const [ empLastName, setEmpLastName ] = useState([])
-    const [ empDateOfHire, setEmpDateOfHire ] = useState([])
-    const [ empStreetAddress, setEmpStreetAddress ] = useState([])
-    const [ empCity, setEmpCity ] = useState([])
-    const [ empState, setEmpState ] = useState([])
-    const [ empZipCode, setEmpZipCode ] = useState([])
+    const [file, setFile] = useState()
+    const [empFirstName, setEmpFirstName] = useState([])
+    const [empLastName, setEmpLastName] = useState([])
+    const [empDateOfHire, setEmpDateOfHire] = useState([])
+    const [empStreetAddress, setEmpStreetAddress] = useState([])
+    const [empCity, setEmpCity] = useState([])
+    const [empState, setEmpState] = useState([])
+    const [empZipCode, setEmpZipCode] = useState([])
 
-    const addNewEmployee = () => {
-        // e.preventDefault();
+    const addNewEmployee = async (e) => {
+        e.preventDefault();
 
         const employeeData = {
             employeeFirstName: `${empFirstName}`,
@@ -23,7 +24,7 @@ function DataEntryComp({}) {
             employeeCity: `${empCity}`,
             employeeState: `${empState}`,
             employeeZipCode: `${empZipCode}`
-            }
+        }
 
         console.log(employeeData)
 
@@ -35,7 +36,12 @@ function DataEntryComp({}) {
         setEmpState('');
         setEmpZipCode('');
     }
-    
+
+    const selectFile = e => {
+        const file = e.target.files[0]
+            setFile(file)
+    }
+
     return (
         <div className='dataEntry_main'>
             <div className='dataEntry_header'>
@@ -43,59 +49,70 @@ function DataEntryComp({}) {
             </div>
 
             <div className='dataEntry_inputs'>
-                <input
-                    value={empFirstName}
-                    placeholder="Employee First Name"
-                    type="text"
-                    onChange={e => setEmpFirstName(e.target.value)}
-                />
+                <form onSubmit={addNewEmployee}>
+                    <input 
+                        onChange={selectFile}
+                        type="file"
+                        accept="iamge/*"
+                    />
 
-                <input
-                    value={empLastName}
-                    placeholder="Employee Last Name"
-                    type="text"
-                    onChange={e => setEmpLastName(e.target.value)}
-                />
+                    <input
+                        value={empFirstName}
+                        placeholder="Employee First Name"
+                        type="text"
+                        onChange={e => setEmpFirstName(e.target.value)}
+                    />
 
-                <input
-                    value={empDateOfHire}
-                    placeholder="Employee Date of Hire"
-                    type="text"
-                    onChange={e => setEmpDateOfHire(e.target.value)}
-                />
+                    <input
+                        value={empLastName}
+                        placeholder="Employee Last Name"
+                        type="text"
+                        onChange={e => setEmpLastName(e.target.value)}
+                    />
 
-                <input
-                    value={empStreetAddress}
-                    placeholder="Employee Street Address"
-                    type="text"
-                    onChange={e => setEmpStreetAddress(e.target.value)}
-                />
+                    <input
+                        value={empDateOfHire}
+                        placeholder="Employee Date of Hire"
+                        type="text"
+                        onChange={e => setEmpDateOfHire(e.target.value)}
+                    />
 
-                <input
-                    value={empCity}
-                    placeholder="Employee City"
-                    type="text"
-                    onChange={e => setEmpCity(e.target.value)}
-                />
+                    <input
+                        value={empStreetAddress}
+                        placeholder="Employee Street Address"
+                        type="text"
+                        onChange={e => setEmpStreetAddress(e.target.value)}
+                    />
 
-                <input
-                    value={empState}
-                    placeholder="Employee State"
-                    type="text"
-                    onChange={e => setEmpState(e.target.value)}
-                />
+                    <input
+                        value={empCity}
+                        placeholder="Employee City"
+                        type="text"
+                        onChange={e => setEmpCity(e.target.value)}
+                    />
 
-                <input
-                    value={empZipCode}
-                    placeholder="Employee Zip Code"
-                    type="text"
-                    onChange={e => setEmpZipCode(e.target.value)}
-                />
+                    <input
+                        value={empState}
+                        placeholder="Employee State"
+                        type="text"
+                        onChange={e => setEmpState(e.target.value)}
+                    />
+
+                    <input
+                        value={empZipCode}
+                        placeholder="Employee Zip Code"
+                        type="text"
+                        onChange={e => setEmpZipCode(e.target.value)}
+                    />
+
+                    <button type="submit">Add New Employee</button>
+
+                </form>
             </div>
 
-            <div className='dataEntry_submit'>
+            {/* <div className='dataEntry_submit'>
                 <button onClick={addNewEmployee} type="submit">Add New Employee</button>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -6,3 +6,7 @@
     /* float: left; */
     border: 2px solid red;
 }
+
+form {
+    display: inline-block;
+}
