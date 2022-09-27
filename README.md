@@ -34,6 +34,8 @@ AWS_Employee_Information_Bank
 
 #3 After completing the basic layout and inputs of the Data Entry component ... set-up the AWS S3 bucket to store the information in the cloud.
 
+#4 Created the option to add a file on the front-end in the main component. Since the user will be entering all the information, thought maybe it would be usefull to attach a picture of ... something.
+
 # AWS Set-Up
 
 #1 First created a bucket in S3 that will be the database where all the objects will be stored. The information coming from the front-end will be an object with all the data of the employee.
