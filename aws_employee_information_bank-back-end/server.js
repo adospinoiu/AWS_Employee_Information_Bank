@@ -3,7 +3,6 @@ import multer from 'multer';
 
 // App config
 const app = express();
-const port = process.env.PORT || 9000
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -19,9 +18,17 @@ app.use((req, res, next) => {
     next();
 })
 
+// Basic to make sure the server is working
 app.get('/', (req, res) => {
     res.status(200).send('Hello World')
 })
 
+// POST-Request tied to the 'submit button' on the client side
+app.post('/api/posts', upload.single('image'), async (req, res) => {
+    console.log("req.body", req.body)
+    console.log("req.file", req.file)
+    res.send({})
+})
+
 // Listener
-app.listen(port, () => console.log(`Listening on localhost:${port}`))
+app.listen(8080, () => console.log(`Listening on port 8080`))

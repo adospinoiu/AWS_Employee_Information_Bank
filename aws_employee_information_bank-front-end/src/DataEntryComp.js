@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from './axios';
+import axios from './axios';
 import './DataEntryComp.css';
 
 function DataEntryComp() {
@@ -42,8 +42,18 @@ function DataEntryComp() {
     const submit = async e => {
         e.preventDefault()
 
-        const formData = new FormData();
+        const formData = new FormData()
         formData.append("image", file)
+        formData.append("employeeFirstName", empFirstName)
+        formData.append("employeeLastName", empLastName)
+        formData.append("employeeDateOfHire", empDateOfHire)
+        formData.append("employeeStreetAddress", empStreetAddress)
+        formData.append("employeeState", empState)
+        formData.append("employeeZipCode", empZipCode)
+
+        console.log(formData)
+
+        await axios.post('/api/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}})
     }
 
     return (
@@ -53,7 +63,7 @@ function DataEntryComp() {
             </div>
 
             <div className='dataEntry_inputs'>
-                <form onSubmit={addNewEmployee}>
+                <form onSubmit={submit}>
                     <input 
                         files={file}
                         name="image"
