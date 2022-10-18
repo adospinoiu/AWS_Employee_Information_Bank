@@ -1,8 +1,12 @@
 import express from 'express';
+import multer from 'multer';
 
 // App config
 const app = express();
 const port = process.env.PORT || 9000
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
 // Middleware
 app.use(express.json());
