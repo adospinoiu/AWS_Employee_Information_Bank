@@ -63,3 +63,5 @@ AWS_Employee_Information_Bank
 #1 Need to install a middleware (multer) that can handle the different type of media files that might be submitted to the S3 bucket.
 
 #2 Created first the Policy on how to access the S3 bucket on AWS
+
+#3 Then create a User ... a User can either be a real person that will access the resource on AWS or an App that will be accessing the resource on AWS. (i.e. the resource is the bucket)
