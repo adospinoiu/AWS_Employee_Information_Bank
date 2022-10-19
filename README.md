@@ -61,3 +61,5 @@ AWS_Employee_Information_Bank
 # Back End Set-Up
 
 #1 Need to install a middleware (multer) that can handle the different type of media files that might be submitted to the S3 bucket.
+
+#2 Created first the Policy on how to access the S3 bucket on AWS

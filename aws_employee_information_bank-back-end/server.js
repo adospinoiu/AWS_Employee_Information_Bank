@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
 app.post('/api/posts', upload.single('image'), async (req, res) => {
     console.log("req.body", req.body)
     console.log("req.file", req.file)
+    req.file.buffer
     res.send({})
 })
 
