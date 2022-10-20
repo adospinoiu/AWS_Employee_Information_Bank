@@ -33,15 +33,15 @@ const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
 
 // Middleware
-// app.use(express.json());
+app.use(express.json());
 
 // Security Warning
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Headers', '*');
-//     // res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE');
-//     next();
-// })
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    // res.setHeader('Access-Control-Allow-Methods', 'GET,POST,DELETE');
+    next();
+})
 
 // Basic to make sure the server is working
 app.get('/', (req, res) => {
@@ -53,13 +53,13 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
     console.log("req.body", req.body)
     console.log("req.file", req.file)
 
-    
-    req.file.buffer
+    // Resize the Image
+    const buffer = await sharp(req.file.buffer).resize({height: 1920, width: 1080, fit: "contain"}).toBuffer()
 
     const params = {
         Bucket: bucketName,
         Key: randomImageName(),
-        Body: req.file.buffer,
+        Body: buffer,
         ContentType: req.file.mimetype,
     }
 

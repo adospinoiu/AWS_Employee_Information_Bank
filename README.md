@@ -71,3 +71,7 @@ AWS_Employee_Information_Bank
 #5 First create the S3Client that will be able to access the S3 bucket.
 
 #6 Then create the PutObjectCommand that will actually be sending the data to the S3 bucket
+
+#7 Also installed npm sharp which is a way to re-size images down to smaller sizes.
+
+#8 It now works! Images are sent to the S3 bucket.
