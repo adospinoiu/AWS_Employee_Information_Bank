@@ -39,8 +39,8 @@ function DataEntryComp() {
         setEmpZipCode('');
     }
 
-    const submit = async e => {
-        e.preventDefault()
+    const submit = async event => {
+        event.preventDefault()
 
         const formData = new FormData()
         formData.append("image", file)

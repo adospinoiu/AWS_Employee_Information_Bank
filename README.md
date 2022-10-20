@@ -67,3 +67,7 @@ AWS_Employee_Information_Bank
 #3 Then create a User ... a User can either be a real person that will access the resource on AWS or an App that will be accessing the resource on AWS. (i.e. the resource is the bucket)
 
 #4 Make sure to install library @aws-sdk/client-s3 in order to be able to interact with the AWS s3 bucket.
+
+#5 First create the S3Client that will be able to access the S3 bucket.
+
+#6 Then create the PutObjectCommand that will actually be sending the data to the S3 bucket
