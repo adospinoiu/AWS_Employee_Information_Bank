@@ -86,6 +86,8 @@ app.get('/', (req, res) => {
 //     res.send(posts)
 // })
 
+
+
 // POST-Request tied to the 'submit button' on the client side
 app.post('/api/image', upload.single('image'), async (req, res) => {
     console.log("req.body", req.body)

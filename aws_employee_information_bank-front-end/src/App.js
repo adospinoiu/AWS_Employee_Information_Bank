@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -7,22 +7,16 @@ import DataEntryComp from './DataEntryComp';
 import DataViewEditComp from './DataViewEditComp';
 
 function App() {
-  const [ newFile, setNewFile ] = useState([]);
+  // const [ newFile, setNewFile ] = useState([]);
   const [ newEmployee, setNewEmployee ] = useState([]);
 
   // These are used to GET the file from AWS S3 Bucket & data from MongoDB
-  // useEffect(() => {
-  //   axios.get('/addNewEmployee/added')
-  //     .then(response => {
-  //       setNewEmployee(response.data)
-  //     })
-  //     console.log(newEmployee)
-  // }, [newEmployee])
-
-  axios.get('/addNewEmployee/added')
-  .then(response => {
-    setNewEmployee(response.data)
-  })
+  useEffect(() => {
+    axios.get('/addNewEmployee/added')
+      .then(response => {
+        setNewEmployee(response.data)
+      })
+  }, [])
 
   console.log(newEmployee)
 
