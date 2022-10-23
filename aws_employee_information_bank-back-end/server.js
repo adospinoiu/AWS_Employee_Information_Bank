@@ -43,7 +43,7 @@ const s3 = new S3Client({
     credentials: {
         accessKeyId: accessKey,
         secretAccessKey: secretAccessKey,
-    }  
+    }
 })
 
 // App config
@@ -92,13 +92,13 @@ app.post('/api/image', upload.single('image'), async (req, res) => {
     console.log("req.file", req.file)
 
     // Resize the Image
-    const buffer = await sharp(req.file.buffer).resize({height: 1920, width: 1080, fit: "contain"}).toBuffer()
+    const buffer = await sharp(req.file.buffer).resize({ height: 1920, width: 1080, fit: "contain" }).toBuffer()
 
     const imageName = randomImageName()
     const params = {
         Bucket: bucketName,
         Key: imageName,
-        Body: buffer, 
+        Body: buffer,
         ContentType: req.file.mimetype,
     }
 
@@ -108,7 +108,21 @@ app.post('/api/image', upload.single('image'), async (req, res) => {
     res.send({})
 })
 
-app.post('/api/data', (req, res) => {
+// GET-Request. This gets all the employee data from MongoDB database and passes it to App.js Component which then passes it down to the children components
+app.get('/addNewEmployee/added', (req, res) => {
+    const newEmployee = req.body
+
+    AddNewEmployee.find(newEmployee, (err, data) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(data);
+        }
+    })
+})
+
+// POST-Request tied to the 'Add New Employee Button'. This sends the employee data to the MongoDB database
+app.post('/addNewEmployee/new', (req, res) => {
     const newEmployee = req.body
 
     AddNewEmployee.create(newEmployee, (err, data) => {

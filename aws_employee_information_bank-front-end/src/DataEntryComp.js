@@ -13,31 +13,31 @@ function DataEntryComp() {
     const [empState, setEmpState] = useState([])
     const [empZipCode, setEmpZipCode] = useState([])
 
-    const addNewEmployee = async (e) => {
-        e.preventDefault();
+    // const addNewEmployee = async (e) => {
+    //     e.preventDefault();
 
-        const employeeData = {
-            file: `${file}`,
-            employeeFirstName: `${empFirstName}`,
-            employeeLastName: `${empLastName}`,
-            employeeDateOfHire: `${empDateOfHire}`,
-            employeeStreetAddress: `${empStreetAddress}`,
-            employeeCity: `${empCity}`,
-            employeeState: `${empState}`,
-            employeeZipCode: `${empZipCode}`
-        }
+    //     const employeeData = {
+    //         file: `${file}`,
+    //         employeeFirstName: `${empFirstName}`,
+    //         employeeLastName: `${empLastName}`,
+    //         employeeDateOfHire: `${empDateOfHire}`,
+    //         employeeStreetAddress: `${empStreetAddress}`,
+    //         employeeCity: `${empCity}`,
+    //         employeeState: `${empState}`,
+    //         employeeZipCode: `${empZipCode}`
+    //     }
 
-        console.log(employeeData)
+    //     console.log(employeeData)
 
-        setFile();
-        setEmpFirstName('');
-        setEmpLastName('');
-        setEmpDateOfHire('');
-        setEmpStreetAddress('');
-        setEmpCity('');
-        setEmpState('');
-        setEmpZipCode('');
-    }
+    //     setFile();
+    //     setEmpFirstName('');
+    //     setEmpLastName('');
+    //     setEmpDateOfHire('');
+    //     setEmpStreetAddress('');
+    //     setEmpCity('');
+    //     setEmpState('');
+    //     setEmpZipCode('');
+    // }
 
     const submit = async event => {
         event.preventDefault()
@@ -55,7 +55,7 @@ function DataEntryComp() {
 
         await axios.post('/api/image', formData, { headers: {'Content-Type': 'multipart/form-data'}})
 
-        await axios.post('/api/data', {
+        await axios.post('/addNewEmployee/new', {
             employeeFirstName: empFirstName,
             employeeLastName: empLastName,
             employeeDateOfHire: empDateOfHire,
