@@ -77,3 +77,5 @@ AWS_Employee_Information_Bank
 #8 It now works! Images are sent to the S3 bucket.
 
 #9 To get the images back from S3 bucket ... need to install library @aws-sdk/s3-request-presigner on server side
+
+#10 Installed Mongoose on the server side. Need a database in order to store all the employee information as well as the image that is being stored in AWS S3 bucket.
