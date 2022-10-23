@@ -75,3 +75,5 @@ AWS_Employee_Information_Bank
 #7 Also installed npm sharp which is a way to re-size images down to smaller sizes.
 
 #8 It now works! Images are sent to the S3 bucket.
+
+#9 To get the images back from S3 bucket ... need to install library @aws-sdk/s3-request-presigner on server side

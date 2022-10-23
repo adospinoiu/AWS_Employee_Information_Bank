@@ -4,7 +4,10 @@ import dotenv from 'dotenv';
 import crypto from 'crypto';
 import sharp from 'sharp';
 
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { PrismaClient } from '@prisma/client';
+
+import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 dotenv.config()
 
@@ -28,6 +31,7 @@ const s3 = new S3Client({
 
 // App config
 const app = express();
+const prisma = new PrismaClient()
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -48,6 +52,23 @@ app.get('/', (req, res) => {
     res.status(200).send('Hello World')
 })
 
+// GET-Request that will pull all the data forward
+app.get('/api/posts', async(req, res) => {
+    const posts = await prisma.posts.findMany({orderBy: [{ created: 'desc'}]})
+
+    for (const post of posts) {
+        const getObjectParams = {
+            Bucket: bucketName,
+            Key: post.imageName
+        }
+        const command = new GetObjectCommand(getObjectParams)
+        const url = await getSignedUrl(s3, command, { expiresIn: 3600 })
+        post.imageUrl = url
+    }
+
+    res.send(posts)
+})
+
 // POST-Request tied to the 'submit button' on the client side
 app.post('/api/posts', upload.single('image'), async (req, res) => {
     console.log("req.body", req.body)
@@ -56,10 +77,11 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
     // Resize the Image
     const buffer = await sharp(req.file.buffer).resize({height: 1920, width: 1080, fit: "contain"}).toBuffer()
 
+    const imageName = randomImageName()
     const params = {
         Bucket: bucketName,
-        Key: randomImageName(),
-        Body: buffer,
+        Key: imageName,
+        Body: buffer, 
         ContentType: req.file.mimetype,
     }
 
