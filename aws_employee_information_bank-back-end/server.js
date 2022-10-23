@@ -1,10 +1,11 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import multer from 'multer';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 import sharp from 'sharp';
 
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 
 import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
@@ -31,7 +32,7 @@ const s3 = new S3Client({
 
 // App config
 const app = express();
-const prisma = new PrismaClient()
+// const prisma = new PrismaClient()
 
 const storage = multer.memoryStorage()
 const upload = multer({ storage: storage })
@@ -53,21 +54,21 @@ app.get('/', (req, res) => {
 })
 
 // GET-Request that will pull all the data forward
-app.get('/api/posts', async(req, res) => {
-    const posts = await prisma.posts.findMany({orderBy: [{ created: 'desc'}]})
+// app.get('/api/posts', async(req, res) => {
+//     const posts = await prisma.posts.findMany({orderBy: [{ created: 'desc'}]})
 
-    for (const post of posts) {
-        const getObjectParams = {
-            Bucket: bucketName,
-            Key: post.imageName
-        }
-        const command = new GetObjectCommand(getObjectParams)
-        const url = await getSignedUrl(s3, command, { expiresIn: 3600 })
-        post.imageUrl = url
-    }
+//     for (const post of posts) {
+//         const getObjectParams = {
+//             Bucket: bucketName,
+//             Key: post.imageName
+//         }
+//         const command = new GetObjectCommand(getObjectParams)
+//         const url = await getSignedUrl(s3, command, { expiresIn: 3600 })
+//         post.imageUrl = url
+//     }
 
-    res.send(posts)
-})
+//     res.send(posts)
+// })
 
 // POST-Request tied to the 'submit button' on the client side
 app.post('/api/posts', upload.single('image'), async (req, res) => {

@@ -132,10 +132,6 @@ function DataEntryComp() {
 
                 </form>
             </div>
-
-            {/* <div className='dataEntry_submit'>
-                <button onClick={addNewEmployee} type="submit">Add New Employee</button>
-            </div> */}
         </div>
     )
 }
