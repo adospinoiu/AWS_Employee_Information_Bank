@@ -53,7 +53,17 @@ function DataEntryComp() {
 
         console.log(formData)
 
-        await axios.post('/api/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+        await axios.post('/api/image', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+
+        await axios.post('/api/data', {
+            employeeFirstName: empFirstName,
+            employeeLastName: empLastName,
+            employeeDateOfHire: empDateOfHire,
+            employeeStreetAddress: empStreetAddress,
+            employeeCity: empCity,
+            employeeState: empState,
+            employeeZipCode: empZipCode,
+        })
     }
 
     return (

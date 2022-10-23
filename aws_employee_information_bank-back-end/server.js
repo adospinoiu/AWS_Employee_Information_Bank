@@ -5,12 +5,28 @@ import dotenv from 'dotenv';
 import crypto from 'crypto';
 import sharp from 'sharp';
 
+// Import Schema that will be used to add to database
+import AddNewEmployee from './dbAddNewEmployee.js'
+
 // import { PrismaClient } from '@prisma/client';
 
 import { S3Client, PutObjectCommand, GetObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 dotenv.config()
+
+// DB Config
+const mongoPassword = process.env.MONGO_PASSWORD
+const mongoDatabase = process.env.MONGO_DATABASE
+const connection_url = 'mongodb+srv://controller:JHzOMh9ImpBDMC6S@cluster0.xotjm.mongodb.net/EmployeeInformationBank?retryWrites=true&w=majority';
+
+mongoose.connect(connection_url, {
+    // useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+const db = mongoose.connection;
 
 // To change the file name of the picture (in the S3 bucket) for more security
 const randomImageName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex')
@@ -71,7 +87,7 @@ app.get('/', (req, res) => {
 // })
 
 // POST-Request tied to the 'submit button' on the client side
-app.post('/api/posts', upload.single('image'), async (req, res) => {
+app.post('/api/image', upload.single('image'), async (req, res) => {
     console.log("req.body", req.body)
     console.log("req.file", req.file)
 
@@ -90,6 +106,18 @@ app.post('/api/posts', upload.single('image'), async (req, res) => {
     await s3.send(command)
 
     res.send({})
+})
+
+app.post('/api/data', (req, res) => {
+    const newEmployee = req.body
+
+    AddNewEmployee.create(newEmployee, (err, data) => {
+        if (err) {
+            res.status(500).send(err)
+        } else {
+            res.status(201).send(data)
+        }
+    })
 })
 
 // Listener
